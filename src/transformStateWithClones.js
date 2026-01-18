@@ -9,10 +9,10 @@
 function transformStateWithClones(state, actions) {
   // write code here
   const history = [];
-  let remasterState = { ...state };
+  let currentState = { ...state };
 
   for (const action of actions) {
-    let nextState = { ...remasterState };
+    let nextState = { ...currentState };
 
     switch (action.type) {
       case `clear`:
@@ -27,11 +27,11 @@ function transformStateWithClones(state, actions) {
         }
         break;
       default:
-        nextState = { ...remasterState };
+        nextState = { ...currentState };
         break;
     }
-    remasterState = nextState;
-    history.push(remasterState);
+    currentState = nextState;
+    history.push(currentState);
   }
 
   return history;
